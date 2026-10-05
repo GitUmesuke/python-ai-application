@@ -1,0 +1,11 @@
+# Streamlit の設定。
+
+[server]
+# このPCの中からだけ開けるようにする。
+# 既定のままだと同じWi-Fi内の他の端末からも見えてしまうため。
+# スマホなど別の端末から使いたくなったら、この行を消します。
+address = "localhost"
+
+[browser]
+# 使用状況の統計をStreamlit社へ送らない
+gatherUsageStats = false
