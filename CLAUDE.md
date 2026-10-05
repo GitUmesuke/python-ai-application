@@ -23,7 +23,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 動作確認は `PROVIDER="stub"` で済ませ、本物のAPIを使うのは最後の1〜2回にとどめること。
 
 UI・コード内コメント・README はすべて日本語。
-Git管理はしていない。変更履歴も取り消しも無いので、既存ファイルを大きく書き換える前に確認を取る。
+
+## 公開状況（重要）
+
+- **GitHub: `GitUmesuke/python-ai-application`（Public）。** コードは世界中から読める。
+  鍵は入っていないことを確認済みだが、**新しく書くものも公開される前提で扱う**こと。
+- **Streamlit Community Cloud にデプロイ済み**（`main` ブランチ / `app.py`）。
+  アプリ自体は**非公開設定**で、許可した人だけが使える。
+- **`main` に push すると、動いているアプリが自動で更新される**（GitHubのWebhook）。
+  試作段階のコードを push しない。手元で確認してから上げる。
+- **APIキーの置き場所が2系統ある。**
+  ローカルは `.env`、クラウドは Streamlit の `App settings` → `Secrets`（TOML形式）。
+  Streamlit が起動時に secrets を `os.environ` に入れるため、`core/config.py` の
+  「`.env` が無ければ環境変数を見る」経路でそのまま動く。**この分岐を消さないこと。**
+- `.streamlit/config.toml` の `address = "localhost"` はクラウドでは影響しない
+  （クラウド側の指定が優先される。デプロイして動作することを確認済み）。
 
 ## コマンド
 
